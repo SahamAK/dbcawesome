@@ -83,9 +83,6 @@ namespace :generate do
 end
 
 namespace :db do
-  desc "Drop, create, and migrate the database"
-  task :reset => [:drop, :create, :migrate]
-
   desc "Create the databases at #{DB_NAME}"
   task :create do
     puts "Creating development and test databases if they don't exist..."
@@ -119,11 +116,11 @@ namespace :db do
     require APP_ROOT.join('db', 'seeds.rb')
   end
 
-  desc "Creates, migrates, and seeds database"
-  task :reset => [:create, :migrate, :seed]
+  desc "Creates, migrates and seeds the database"
+  task :initialize => [:create, :migrate, :seed]
 
-  desc "Drops, creates, migrates and seeds the database"
-  task :initialize => [:drop, :reset]
+  desc "Drops, creates, migrates, and seeds database"
+  task :reset => [:drop, :initialize]
 
   desc "Returns the current schema version number"
   task :version do
