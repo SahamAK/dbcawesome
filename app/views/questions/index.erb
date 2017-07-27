@@ -7,17 +7,12 @@
           <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
           <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-down vote-button downvote-button"></button>
         </form>
-        <span class='question_vote'>question vote count</span>
-        <h2><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
-        <p>
-          <!-- <span class='points'><%= question.points %></span> -->
-          <span class='username'><%= question.username %></span>
-          <span class='timestamp'><%= question.time_since_creation %></span>
-          <!-- <span class='comment-count'><%= question.comment_count %></span> -->
-          <!-- <a class="delete" href='/questions/<%= question.id %>'></a> -->
-        </p>
-      </article>
 
+        <span class='question_vote'>question vote count</span>
+
+        <h2><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
+      </article>
+      <hr />
     <% end %>
   </div>
 
