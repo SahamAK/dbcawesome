@@ -1,0 +1,12 @@
+<!-- Assuming a @question variable will be passed in -->
+
+<h2><%= @question.title %></h2>
+<p><%= @question.body %></p>
+
+<h3><%= @question.answers.count %> Answers</h3>
+<% @question.answers.each do |answer| %>
+  <hr />
+  <p><%= answer.body %></p>
+  <small style="text-align: right;"><%= answer.author %></small>
+  <a href="/comments">Add Comment</a>
+<% end %>

@@ -13,5 +13,4 @@ users_available = User.all.count
   User.create(username: username, email: email, password: "password")
 end
 
-
-
+Question.new(title: "What is this?", body: "I'm not sure what this is, help!")
