@@ -4,9 +4,12 @@
     <nav>
       <ul>
         <li><a href="/">Home</a></li> |
-        <li><a href="/users/new">Register</a></li> |
-        <li><a href="/sessions/new">Login</a></li> |
-        <li><a href="/sessions/:id">Logout</a></li>
+        <% if logged_in? %>
+          <li><a href="/sessions/:id">Logout</a></li>
+        <% else %>
+          <li><a href="/users/new">Register</a></li> |
+          <li><a href="/sessions/new">Login</a></li> |
+        <% end %>
       </ul>
     </nav>
   </div>

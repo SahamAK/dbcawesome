@@ -9,7 +9,7 @@ post '/sessions' do
   if @user
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect '/questions/index'
+      redirect '/questions'
     else
       redirect '/sessions/new'
     end
