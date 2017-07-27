@@ -1,5 +1,3 @@
-<!-- Assuming a @question variable will be passed in -->
-
 <h2><%= @question.title %></h2>
 <p><%= @question.body %></p>
 
@@ -7,6 +5,10 @@
 <% @question.answers.each do |answer| %>
   <hr />
   <p><%= answer.body %></p>
-  <small style="text-align: right;"><%= answer.author %></small>
-  <a href="/comments">Add Comment</a>
+  <small style="text-align: right;"><a href="/comments">Add Comment</a> | Posted by: <a href="#"><%= answer.author.username %></a></small>
+
+  <% answer.comments do |comment| %>
+    <p style="font-size: 8pts;"><%= comment.body %></p>
+  <% end %>
+
 <% end %>

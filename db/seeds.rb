@@ -1,7 +1,6 @@
 require 'faker'
 
-
-users_desired = 50
+users_desired = 25
 users_available = User.all.count
 
 (users_desired - users_available).times do
@@ -10,7 +9,16 @@ users_available = User.all.count
   username = "#{first_name}.#{last_name}"
   email = Faker::Internet.safe_email(username)
 
-  User.create(username: username, email: email, password: "password")
+  user = User.create(username: username, email: email, password: "password")
+
+  rand(1..10).times do
+    question = Question.new(title: "#{Faker::Beer.name}?", body: Faker::Hipster.sentence(rand(20..50)), author: user)
+    question.save
+
+    rand(1..5).times do
+      question.answers << Answer.new(author_id: rand(1..users_desired), body: Faker::Hipster.sentence(rand(15..35)))
+    end
+  end
+
 end
 
-Question.new(title: "What is this?", body: "I'm not sure what this is, help!")
