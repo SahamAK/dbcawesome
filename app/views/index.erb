@@ -1,0 +1,10 @@
+<div class="container">
+  <h2> <a href="/users/new">Please Sign up </h2>
+  <% if session[:user_id] != nil %>
+
+    <%= erb :'sessions/_logout', layout: false %>
+
+  <% else %>
+    <h2><a href="/sessions/new">Login</h2>
+  <% end %>
+</div>
