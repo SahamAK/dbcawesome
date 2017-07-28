@@ -1,13 +1,15 @@
-<hr />
-<p><%= answer.body %></p>
+<div class="answer">
+  <hr />
+  <p><%= answer.body %></p>
 
-  <small style="text-align: right;">
-  <% if logged_in? %>
-  <a href="/comments">Add Comment</a> |
-  <% end %>
-  Posted by: <a href="#"><%= answer.author.username %></a></small>
+    <small style="text-align: right;">
+    <% if logged_in? %>
+      <a class="comment-link" href="/comments">Add Comment</a> |
+    <% end %>
+    Posted by: <a href="#"><%= answer.author.username %></a></small>
 
-<% answer.comments do |comment| %>
-  <p style="font-size: 8pts;"><%= comment.body %></p>
-
-<% end %><br /><br />
+  <% answer.comments do |comment| %>
+    <p style="font-size: 8pts;"><%= comment.body %></p>
+      <%= erb :"/_response", layout:false, locals: { question: @question } %>
+  <% end %><br /><br />
+</div>

@@ -5,6 +5,7 @@ $(function() {
     event.preventDefault();
 
     $(this).nextAll("form.add-form").slideToggle();
+    $(this).hide();
   });
 
   // ANSWER FORM ON SUBMIT AJAX
@@ -18,9 +19,26 @@ $(function() {
       data: $this.serialize()
     });
 
+    request.done(function(response){
+      $this.find("textarea").val("");
+      console.log(response);
 
+      // come back to this later.  Fade is not working as intended.
+      $this.slideToggle();
+      $(".answer-container").prepend(response);
+      $("button.add").show();
+    });
   });
 
+//  ADD COMMENTS
+//   $("a.comment-link").on("click", function(event){
+//     event.preventDefault();
+//     var $this = $(this)
 
+//     console.log("Mooooo!")
+
+
+
+//   })
 
 });

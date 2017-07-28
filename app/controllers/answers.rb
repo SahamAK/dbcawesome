@@ -8,11 +8,13 @@ post "/answers" do
 
   if @answer.save
     if request.xhr?
-      # <%
+      erb :"/questions/_answer", layout: false, locals: { answer: @answer }
     else
       redirect "/questions/#{@answer.question.id}"
     end
-
+  else
+    @errors = ["Oops!  There was an error saving the answer.  Try again!"]
+    redirect "/question/#{@answer.question.id}"
   end
 
 end

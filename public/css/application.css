@@ -1,7 +1,5 @@
-nav ul, nav ul li {
-    list-style-type: none;
-    display: inline;
-    padding: 5px;
+* {
+  color: rgba(0,0,0,0.85);
 }
 
 .container {
@@ -14,6 +12,12 @@ nav ul, nav ul li {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.50);
 }
 
+nav ul, nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 5px;
+}
+
 header {
   background-color:
 }
@@ -22,17 +26,15 @@ header {
   text-align: center;
 }
 
-* {
-  color: rgba(0,0,0,0.85);
-}
-
 body {
   background-image: url('../assets/download.png');
 }
 /*Sa EW questions css*/
+
 .inline {
   display: inline;
 }
+
 .upvote-button, .downvote-button {
   background-color: transparent;
   border: none;

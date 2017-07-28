@@ -8,7 +8,9 @@
   <%= erb :"/_response", layout:false, locals: { question: @question } %>
 <% end %>
 
-<% @question.answers.each do |answer| %>
-  <%= erb :"/questions/_answer", layout: false, locals: { answer: answer } %>
-<% end %>
-<br />
+<div class="answer-container">
+  <% @question.answers.each do |answer| %>
+    <%= erb :"/questions/_answer", layout: false, locals: { answer: answer } %>
+  <% end %>
+  <br />
+</div>
