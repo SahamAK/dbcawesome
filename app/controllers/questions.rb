@@ -9,5 +9,7 @@ get "/questions/:id" do
 end
 
 post '/questions' do
+  # @user = current_user
+  # @question = Question.new(title: params[:title], body: params[:body])
 
 end

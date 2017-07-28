@@ -30,7 +30,7 @@ body {
   background-image: url('../assets/download.png');
   background-size: cover;
 }
-
+/*Sa EW questions css*/
 .inline {
   display: inline;
 }
@@ -42,3 +42,4 @@ body {
   vertical-align: sub;
   padding: 1px 0px 0px 0px;
 }
+/****************************************/

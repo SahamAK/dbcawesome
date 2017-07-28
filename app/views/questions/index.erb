@@ -3,27 +3,35 @@
     <% @questions.each do |question| %>
 
       <article id="<%= question.id %>">
-        <form method="post" action='/questions/<%= question.id %>/vote' class="">
-          <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-        </form>
+        <% if logged_in? %>
+          <form method="post" action='/questions/<%= question.id %>/vote' class="button-up">
+            <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+          </form>
+        <% end %>
 
         <span class='question_vote '>12</span>
+
         <h2 class='inline'><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
 
-        <form method="post" action='/questions/<%= question.id %>/vote' class="">
-          <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-down vote-button downvote-button"></button>
-        </form>
+        <% if logged_in? %>
+          <form method="post" action='/questions/<%= question.id %>/vote' class="button-down">
+            <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-down vote-button downvote-button"></button>
+          </form>
+        <% end %>
 
       </article>
       <hr />
     <% end %>
   </div>
 
-
+  <% if logged_in? %>
+  <div class="">
     <form id="questions" method="post" action="/questions">
       <input type="text" name="title" placeholder="title">
       <input type="submit" value="submit new question">
     </form>
 
-    <textarea name="body" form="questions" placeholder="textarea"></textarea>
+    <textarea rows="4" cols="87"  name="body" form="questions" placeholder="textarea"></textarea>
+  <% end %>
+  </div>
 </section>
