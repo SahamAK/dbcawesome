@@ -8,7 +8,7 @@ post "/answers" do
 
   if @answer.save
     if request.xhr?
-      # @answer
+      # <%
     else
       redirect "/questions/#{@answer.question.id}"
     end
