@@ -47,7 +47,57 @@ $(document).ready(function() {
     // });
 
 
-  })
+  });
+
+  // AJAX for upvoting for question
+  $(".question-container").on("submit", ".button-up", function(){
+    event.preventDefault();
+    console.log($(this));
+    $this = $(this);
+
+    var request = $.ajax({
+      url: $this.attr('action'),
+      type: $this.attr('method'),
+      // data: $this.find('input').attr('value'),
+      data: $this.closest('form').serialize(),
+    })
+    request.done(function(response) {
+      $this.nextAll('span').text(response)
+    })
+    // .fail(function() {
+    //   console.log("error");
+    // })
+    // .always(function() {
+    //   console.log("complete");
+    // });
+
+  });
+
+// AJAX for downvoting for question
+  $(".question-container").on("submit", ".button-down", function(){
+    event.preventDefault();
+    console.log($(this));
+    $this = $(this);
+
+    var request = $.ajax({
+      url: $this.attr('action'),
+      type: $this.attr('method'),
+      // data: $this.find('input').attr('value'),
+      data: $this.closest('form').serialize(),
+    })
+    request.done(function(response) {
+      // console.log(response);
+      // response
+      $this.prevAll('span').text(response)
+    })
+    // .fail(function() {
+    //   console.log("error");
+    // })
+    // .always(function() {
+    //   console.log("complete");
+    // });
+
+  });
 
 
 });
