@@ -16,9 +16,18 @@ users_available = User.all.count
     question.save
 
     rand(1..5).times do
-      question.answers << Answer.new(author_id: rand(1..users_desired), body: Faker::Hipster.sentence(rand(15..35)))
+      question.comments << Comment.new(commenter_id: rand(1..users_desired), body: Faker::Hipster.sentence(rand(10-20)))
+    end
+
+    rand(1..7).times do
+      answer = Answer.new(author_id: rand(1..users_desired), question: question, body: Faker::Hipster.sentence(rand(15..35)))
+      answer.save
+
+      rand(1..5).times do
+        answer.comments << Comment.new(commenter_id: rand(1..users_desired),  body: Faker::Hipster.sentence(rand(10-20)))
+      end
+
     end
   end
 
 end
-
