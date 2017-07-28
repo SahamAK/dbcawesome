@@ -6,7 +6,7 @@
     </form>
   <% end %>
 
-  <span class='question_vote '>12</span>
+  <span class='question_vote '><%= question.votes.sum(:vote_value) %></span>
 
   <h2 class='inline'><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
 
