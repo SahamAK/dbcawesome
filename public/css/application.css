@@ -1,6 +1,17 @@
 * {
   color: rgba(0,0,0,0.85);
 }
+.comment-container {
+  padding-left: 25%;
+}
+  .comment-container p {
+    padding: 0px;
+    margin: 0px;
+    font-size: small;
+  }
+  .comment-container hr {
+    opacity: 0.3;
+  }
 
 .container {
   max-width: 720px;
@@ -44,3 +55,10 @@ body {
   padding: 1px 0px 0px 0px;
 }
 /****************************************/
+form {
+  margin-top: 15px;
+}
+
+.question-comment {
+  margin-top: 15px;
+}

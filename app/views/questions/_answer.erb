@@ -2,14 +2,24 @@
   <hr />
   <p><%= answer.body %></p>
 
-    <small style="text-align: right;">
-    <% if logged_in? %>
-      <a class="comment-link" href="/comments">Add Comment</a> |
-    <% end %>
-    Posted by: <a href="#"><%= answer.author.username %></a></small>
+  <small style="text-align: right;">
+  Posted by: <a href="#"><%= answer.author.username %></a>
+  <% if logged_in? %>
+    | <a class="comment-link" href="#">Add Comment</a>
 
-  <% answer.comments do |comment| %>
-    <p style="font-size: 8pts;"><%= comment.body %></p>
-      <%= erb :"/_response", layout:false, locals: { question: @question } %>
-  <% end %><br /><br />
+    <form class="add-comment-form" action="/answers/<%= answer.id %>/comments" method="post" style="display: none;">
+      <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      <textarea name="body" rows="4" cols="87" placeholder="Enter your text"></textarea><br />
+      <input type="submit" value="Submit Comment" />
+    </form>
+
+  <% end %>
+  </small>
+
+  <div class="comment-container">
+    <% answer.comments.each do |comment| %>
+      <%= erb :"comments/_comment", layout:false, locals: {comment: comment} %>
+    <% end %><br />
+  </div>
+
 </div>

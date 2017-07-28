@@ -3,8 +3,8 @@ get "/answers" do
   erb :"/answers/index"
 end
 
-post "/answers" do
-  @answer = Answer.new(question_id: params[:question_id], body: params[:body], author: current_user)
+post "/questions/:id/answers" do
+  @answer = Answer.new(question_id: params[:id], body: params[:body], author: current_user)
 
   if @answer.save
     if request.xhr?

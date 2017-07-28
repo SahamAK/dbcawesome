@@ -1,0 +1,1 @@
+    <%= erb :"/_response", layout:false, locals: { target: @question, response_path: "questions/#{@question.id}/answers" } %>

@@ -1,5 +1,5 @@
-<form class="add-form" action="/answers" method="post" style="display: none;">
-  <input type="hidden" name="question_id" value="<%= question.id %>">
+<form class="add-form" action="/<%= response_path %>" method="post" style="display: none;">
+  <input type="hidden" name="question_id" value="<%= target.id %>">
   <textarea name="body" rows="4" cols="87" placeholder="Enter your text"></textarea><br />
   <input type="submit" value="Submit Answer" />
 </form>
