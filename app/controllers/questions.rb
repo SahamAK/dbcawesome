@@ -9,7 +9,13 @@ get "/questions/:id" do
 end
 
 post '/questions' do
-  # @user = current_user
-  # @question = Question.new(title: params[:title], body: params[:body])
-
+  @user = current_user
+  @question = Question.new(title: params[:title], body: params[:body])
+  @user.questions << @question
+  if request.xhr?
+    erb :'questions/_question', layout: false, locals: {question: @question}
+  else
+    redirect "/questions"
+  end
 end
+

@@ -1,0 +1,19 @@
+<article id="<%= question.id %>">
+  <% if logged_in? %>
+    <form method="post" action='/questions/<%= question.id %>/vote' class="button-up">
+      <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+    </form>
+  <% end %>
+
+  <span class='question_vote '>12</span>
+
+  <h2 class='inline'><a href='/questions/<%= question.id %>'><%= question.title %></a></h2>
+
+  <% if logged_in? %>
+    <form method="post" action='/questions/<%= question.id %>/vote' class="button-down">
+      <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-down vote-button downvote-button"></button>
+    </form>
+  <% end %>
+
+</article>
+<hr />
