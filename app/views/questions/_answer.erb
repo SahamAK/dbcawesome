@@ -1,0 +1,12 @@
+<hr />
+<p><%= answer.body %></p>
+
+  <small style="text-align: right;">
+  <% if logged_in? %>
+  <a href="/comments">Add Comment</a> |
+  <% end %>
+  Posted by: <a href="#"><%= answer.author.username %></a></small>
+
+<% answer.comments do |comment| %>
+  <p style="font-size: 8pts;"><%= comment.body %></p>
+<% end %><br /><br />

@@ -2,13 +2,13 @@
 <p><%= @question.body %></p>
 
 <h3><%= @question.answers.count %> Answers</h3>
-<% @question.answers.each do |answer| %>
-  <hr />
-  <p><%= answer.body %></p>
-  <small style="text-align: right;"><a href="/comments">Add Comment</a> | Posted by: <a href="#"><%= answer.author.username %></a></small>
 
-  <% answer.comments do |comment| %>
-    <p style="font-size: 8pts;"><%= comment.body %></p>
-  <% end %>
-
+<% if logged_in? %>
+  <button class="add">Add Answer</button>
+  <%= erb :"/_response", layout:false, locals: { question: @question } %>
 <% end %>
+
+<% @question.answers.each do |answer| %>
+  <%= erb :"/questions/_answer", layout: false, locals: { answer: answer } %>
+<% end %>
+<br />
