@@ -1,11 +1,11 @@
 <header>
   <div id="header">
-    <h1>Team Aweome: DBC Overflow</h1>
+    <h1>Team Awesome: DBC Overflow</h1>
     <nav>
       <ul>
         <li><a href="/">Home</a></li> |
         <% if logged_in? %>
-          <li><a href="/sessions/:id">Logout</a></li>
+          <li><%= erb :"/sessions/_logout", layout:false %></li>
         <% else %>
           <li><a href="/users/new">Register</a></li> |
           <li><a href="/sessions/new">Login</a></li> |

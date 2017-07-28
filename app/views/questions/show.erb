@@ -1,11 +1,17 @@
 <h2><%= @question.title %></h2>
 <p><%= @question.body %></p>
 
-<h3><%= @question.answers.count %> Answers</h3>
+<small style="text-align: right !important;">Asked by: <a href="/users/<%= @question.author.id %>"><%= @question.author.username %></a> on <%= @question.created_at.strftime("%c") %> | </small>
+
+<%= erb :"/_add_comment", layout:false %>
+
+<h3><%= @question.answers.count %> Answer<%= @question.answers.count != 1 ? "s" : "" %></h3>
 <% @question.answers.each do |answer| %>
   <hr />
   <p><%= answer.body %></p>
-  <small style="text-align: right;"><a href="/comments">Add Comment</a> | Posted by: <a href="#"><%= answer.author.username %></a></small>
+
+  <%= erb :"/_add_comment", layout:false %> |
+  <small>Posted by: <a href="/users/<%= answer.author.id %>"><%= answer.author.username %></a></small>
 
   <% answer.comments do |comment| %>
     <p style="font-size: 8pts;"><%= comment.body %></p>
