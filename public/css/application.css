@@ -50,3 +50,7 @@ body {
   .form-link {
     display: inline;
   }
+
+.comment-form {
+  display: none;
+}

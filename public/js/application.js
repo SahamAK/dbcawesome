@@ -3,7 +3,17 @@ $(document).ready(function() {
     event.preventDefault();
 
     var $this = $(this);
-    $this.closest("small").nextAll("p").css("display", "block");
+    var $form = $this.closest("small").nextAll(".comment-form").first();
+    $form.slideToggle("slow");
+
+    // revisit code
+    // if ($this.text("Add Comment")){
+    //   $this.text("Hide Comment");
+    // } else if ($this.text("Hide Comment")) {
+    //   $this.text("Add Comment");
+    // } else {
+    //   $this.text("Add Comment")
+    // }
 
   });
 });
