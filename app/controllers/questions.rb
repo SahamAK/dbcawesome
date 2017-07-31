@@ -18,4 +18,3 @@ post '/questions' do
     redirect "/questions"
   end
 end
-

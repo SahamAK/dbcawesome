@@ -1,14 +1,45 @@
 <h2><%= @question.title %></h2>
 <p><%= @question.body %></p>
 
+<div class="comment-container">
+
+
+  <% @question.comments.each do |comment| %>
+    <%= erb :"/comments/_comment", layout: false, locals: { comment: comment } %>
+  <% end %>
+ <!-- comment form -->
+
+  <div class="question-comment">
+    <% if logged_in? %>
+      <a class="comment-link" href="#">Add Comment</a>
+
+      <form class="add-comment-form" action="/questions/<%= @question.id %>/comments" method="post" style="display: none;">
+        <input type="hidden" name="question_id" value="<%= @question.id %>">
+        <textarea name="body" rows="4" cols="64" placeholder="Enter your text"></textarea><br />
+        <input type="submit" value="Submit Comment" />
+      </form>
+
+    <% end %>
+  </div>
+</div>
+
 <h3><%= @question.answers.count %> Answers</h3>
-
 <% if logged_in? %>
-  <button class="add">Add Answer</button>
-  <%= erb :"/_response", layout:false, locals: { question: @question } %>
+  <div class="answer-form">
+    <button class="add">Add Answer</button>
+
+    <form class="add-answer-form" action="/questions/<%= @question.id %>/answers" method="post" style="display: none;">
+      <input type="hidden" name="question_id" value="<%= @question.id %>">
+      <textarea name="body" rows="4" cols="87" placeholder="Enter your text"></textarea><br />
+      <input type="submit" value="Submit Answer" />
+    </form>
+
+  </div>
 <% end %>
 
-<% @question.answers.each do |answer| %>
-  <%= erb :"/questions/_answer", layout: false, locals: { answer: answer } %>
-<% end %>
-<br />
+<div class="answer-container">
+  <% @question.answers.each do |answer| %>
+    <%= erb :"/questions/_answer", layout: false, locals: { answer: answer } %>
+  <% end %>
+  <br />
+</div>
